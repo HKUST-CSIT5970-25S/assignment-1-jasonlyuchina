@@ -43,6 +43,8 @@
     | `c5d.large` | 7453  | 13592.11 |
 
     > Region: US East (N. Virginia). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI.
+    
+    **Yes, we can see that for the t2.micro it have 1 vcpu with 1 core, and 1 GB RAM, for the t2.medium, it have 2 vcpu with 2 core each, and 4GB RAM, for the c5d.large, it have 2 vcpu with 1 core each, and 4GB RAM. We can see that with the more vCPUs and more memory resource, the performance of EC2 increases.**
 
 ## Question 2: Measure the EC2 Network performance
 
@@ -50,21 +52,27 @@
 
     | Type                      | TCP b/w (Mbps) | RTT (ms) |
     | ------------------------- | -------------- | -------- |
-    | `t3.medium` - `t3.medium` |                |          |
-    | `m5.large` - `m5.large`   |                |          |
-    | `c5n.large` - `c5n.large` |                |          |
-    | `t3.medium` - `c5n.large` |                |          |
-    | `m5.large` - `c5n.large`  |                |          |
-    | `m5.large` - `t3.medium`  |                |          |
+    | `t3.medium` - `t3.medium` | 3310  | 0.272 |
+    | `m5.large` - `m5.large`   |4960  |0.132 |
+    | `c5n.large` - `c5n.large` | 4960 | 0.299 |
+    | `t3.medium` - `c5n.large` |2010 |0.828 |
+    | `m5.large` - `c5n.large`  | 4960  |0.125 |
+    | `m5.large` - `t3.medium`  |2170 | 0.685 |
 
     > Region: US East (N. Virginia). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI. Note: Use private IP address when using iPerf within the same region. You'll need iPerf for measuring TCP bandwidth and Ping for measuring Round-Trip time.
 
-2. (1 mark) What about the network performance for instances deployed in different regions? In order to answer this question, you need to complete the following table.
+    **For the bandwidth, between the same type of instance is better than or equal to between the different types of instance.**
+   
+    **For the RTT, between the same type of instance is better than or equal to between the different types of instance under most of the conditions.**
+
+3. (1 mark) What about the network performance for instances deployed in different regions? In order to answer this question, you need to complete the following table.
 
     | Connection                | TCP b/w (Mbps) | RTT (ms) |
     | ------------------------- | -------------- | -------- |
-    | N. Virginia - Oregon      |                |          |
-    | N. Virginia - N. Virginia |                |          |
-    | Oregon - Oregon           |                |          |
+    | N. Virginia - Oregon      |   32.5  |  63.05 |
+    | N. Virginia - N. Virginia |  4300  | 0.217 |
+    | Oregon - Oregon           |  4430|0.181  |
  
     > Region: US East (N. Virginia), US West (Oregon). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI. All instances are `c5.large`. Note: Use public IP address when using iPerf within the same region.
+
+    **The network performance for instances deployed in different region is much worse(slower) than which in the same region**
