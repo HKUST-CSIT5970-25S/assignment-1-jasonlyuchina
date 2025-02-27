@@ -5,9 +5,9 @@
 
 ---
 
-### Name: 
-### Student Id: 
-### Email: 
+### Name: LYU Peiduo
+### Student Id: 21135389
+### Email: plyuac@connect.ust.hk
 
 ---
 
@@ -15,17 +15,32 @@
 
 1. (1 mark) Report the name of measurement tool used in your measurements (you are free to choose *any* open source measurement software as long as it can measure CPU and memory performance). Please describe your configuration of the measurement tool, and explain why you set such a value for each parameter. Explain what the values obtained from measurement results represent (e.g., the value of your measurement result can be the execution time for a scientific computing task, a score given by the measurement tools or something else).
 
-    > Your answer goes here.
+    I use the **Phoronix Test Suit** as the measurement tool.
+   
+    For the CPU Benchmark, we use the **compress-7zip** as the test to use the compression and decompression performance as a CPU benchmark.
 
-2. (1 mark) Run your measurement tool on general purpose `t2.micro`, `t2.medium`, and `c5d.large` Linux instances, respectively, and find the performance differences among these instances. Launch all the instances in the **US East (N. Virginia)** region. Does the performance of EC2 instances increase commensurate with the increase of the number of vCPUs and memory resource?
+    It does not have any parameter except from the output related commands.
+   
+    The result is the Compression Rating and Decompression Rating of three separate trial run and the average of three rating.
+   
+    **In the next question, we only use the compression Rating as the performance benchmark**
+
+    For the memory Benchmark, we use the **ramspeed** as the test to use the copy performance on integer as a memorhy benchmark.
+
+    We provide the **copy** and **integer** as the parameter to ask the test suite to do the test with copy and integer.
+
+    The result is the memory bandwidth of the server in three separate trials together with an average of three bandwidth.
+    
+
+3. (1 mark) Run your measurement tool on general purpose `t2.micro`, `t2.medium`, and `c5d.large` Linux instances, respectively, and find the performance differences among these instances. Launch all the instances in the **US East (N. Virginia)** region. Does the performance of EC2 instances increase commensurate with the increase of the number of vCPUs and memory resource?
 
     In order to answer this question, you need to complete the following table by filling out blanks with the measurement results corresponding to each instance type.
 
-    | Size        | CPU performance | Memory performance |
+    | Size        | CPU performance(MIPS) | Memory performance(MB/s) |
     | ----------- | --------------- | ------------------ |
-    | `t2.micro` |                 |                    |
-    | `t2.medium`  |                 |                    |
-    | `c5d.large` |                 |                    |
+    | `t2.micro` | 4235  | 11317.28  |
+    | `t2.medium`  | 9969 |19535.73 |
+    | `c5d.large` | 7453  | 13592.11 |
 
     > Region: US East (N. Virginia). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI.
 
